@@ -1,11 +1,24 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+const questions = document.querySelectorAll<HTMLElement>('.question');
 
-import confetti from 'canvas-confetti';
+questions?.forEach((question: any) => {
+  const btn = question.querySelector('.question-btn');
 
-confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
-  resize: true,
-  useWorker: true,
-})({ particleCount: 200, spread: 200 });
+  btn.addEventListener('click', () => {
+    questions.forEach((item: any) => {
+      if (item !== question) {
+        item.classList.remove('show-text');
+      }
+    });
+    question.classList.toggle('show-text');
+  });
+});
+
+// const btns = document.querySelectorAll<HTMLElement>(".question-btn")
+// btns.forEach((btn)=> {
+// btn.addEventListener("click", (e) => {
+// const question = e.currentTarget.parentElement.parentElement
+// question.classList.toggle("show-text")
+// })
+//})
+
+export {};
